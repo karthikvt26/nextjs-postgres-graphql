@@ -71,7 +71,7 @@ Boilerplate to get started with Nextjs, Hasura GraphQL engine as CMS and postgre
     - Wrap your component with `Query`
       ```js
 
-        <Query    // <- Wrapping the main component with Query component from react-apollo
+        <Query    // <- Wrap the component which requires data with Query component from react-apollo
           query={ query }
           fetchPolicy={ 'cache-and-network' }
         >
