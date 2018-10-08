@@ -37,7 +37,7 @@ Boilerplate to get started with Nextjs, Hasura GraphQL engine as CMS and postgre
   npm install
   ```
 
-- Configure `nextjs` to use `react-apollo` and `withData` to fetch data in the server and render it on the server.
+- Configure `next.js` to use `react-apollo` and `withData` to fetch data in the server and render it on the server.
     - Create config with the following content
       ```js
       import { withData } from 'next-apollo'
@@ -98,7 +98,7 @@ Boilerplate to get started with Nextjs, Hasura GraphQL engine as CMS and postgre
 
 # How it works
 
-  It uses [next-apollo](https://github.com/adamsoffer/next-apollo#how-does-it-work) underneath which ensures that data required by your component is available before your component is rendered on the server and nextjs takes care of the rest.
+  It uses [next-apollo](https://github.com/adamsoffer/next-apollo#how-does-it-work) underneath which ensures that data required by your component is available before your component is rendered on the server and next.js takes care of the rest.
 
 # Contributing
 
