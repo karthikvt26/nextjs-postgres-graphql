@@ -22,6 +22,7 @@ const Index = ({ authors } ) => {
       {({ loading, data: { author:authors }}) => {
         return (
           <div>
+            <h1>My Authors </h1>
             <AuthorList authors={authors} />
           </div>
         );
