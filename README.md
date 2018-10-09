@@ -52,7 +52,7 @@ Boilerplate to get started with Nextjs, Hasura GraphQL engine as CMS and postgre
   export default withData(config)
   ```
 
-- Wrap your page component with `Query` component from `react-apollo` so that appropriate data can be fetched while it is SSRed
+- Wrap your page component with `Query` component from `react-apollo` so that appropriate data can be fetched while the page is SSRed
     - GraphQL query
 
       ```js
