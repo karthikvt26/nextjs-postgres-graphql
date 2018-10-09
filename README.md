@@ -11,12 +11,6 @@ Boilerplate to get started with Nextjs, Hasura GraphQL engine as CMS and postgre
   [![Deploy to
   heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/hasura/graphql-engine-heroku)
 - Get the Heroku app URL (say `my-app.herokuapp.com`)
-- Clone this repo:
-  ```bash
-  git clone https://github.com/hasura/graphql-engine
-  cd graphql-engine/community/boilerplates/nextjs-postgres-graphql
-  ```
-
 - Create `author` table:
   
   Open Hasura console: visit https://my-app.herokuapp.com on a browser  
@@ -32,29 +26,34 @@ Boilerplate to get started with Nextjs, Hasura GraphQL engine as CMS and postgre
 
   ![Insert data into author table](./assets/browse_rows.jpg)
 
+- Clone this repo:
+  ```bash
+  git clone https://github.com/hasura/graphql-engine
+  cd graphql-engine/community/boilerplates/nextjs-postgres-graphql
+  ```
+
 - Install npm modules:
   ```bash
   npm install
   ```
 
-- Configure `next.js` to use `react-apollo` and `withData` to fetch data in the server and render it on the server.
-    - Create config with the following content
-      ```js
-      import { withData } from 'next-apollo'
-      import { HttpLink } from 'apollo-link-http'
-      
-      // can also be a function that accepts a `context` object (SSR only) and returns a config
-      const config = {
-        link: new HttpLink({
-          uri: 'https://hasura-graphql-2.herokuapp.com/v1alpha1/graphql', // <- Configure GraphQL Server URL (must be absolute)
-        })
-      }
+- Create config.js as follows, in this step we are configuring `withData` with an `httpLink` to connect to a valid GraphQL server URL.
+  ```js
+  import { withData } from 'next-apollo'
+  import { HttpLink } from 'apollo-link-http'
+  
+  // can also be a function that accepts a `context` object (SSR only) and returns a config
+  const config = {
+    link: new HttpLink({
+      uri: 'https://my-app.herokuapp.com', // <- Configure GraphQL Server URL (must be absolute)
+    })
+  }
 
-      export default withData(config)
-      ```
+  export default withData(config)
+  ```
 
-- Use `Query` component from `react-apollo` to make a GraphQL requests and wrap it with the `withData` component from `config`
-    - Create GraphQL query
+- Wrap your page component with `Query` component from `react-apollo` so that appropriate data can be fetched while it is SSRed
+    - GraphQL query
 
       ```js
 
@@ -98,7 +97,7 @@ Boilerplate to get started with Nextjs, Hasura GraphQL engine as CMS and postgre
 
 # How it works
 
-  It uses [next-apollo](https://github.com/adamsoffer/next-apollo#how-does-it-work) underneath which ensures that data required by your component is available before your component is rendered on the server and next.js takes care of the rest.
+  It uses [next-apollo](https://github.com/adamsoffer/next-apollo#how-does-it-work) underneath which ensures that data requirement is satisfied before it is rendered on the server and next.js takes care of the rest.
 
 # Contributing
 
